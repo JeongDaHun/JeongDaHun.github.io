@@ -1,0 +1,527 @@
+<html lang="ko"><head>
+<meta charset="UTF-8">
+<style>
+@font-face { font-family: "NotoKR"; src: url("file:///home/claude/NotoSansKR-Regular.ttf"); font-weight: 400; }
+@font-face { font-family: "NotoKR"; src: url("file:///home/claude/NotoSansKR-Medium.ttf"); font-weight: 500; }
+@font-face { font-family: "NotoKR"; src: url("file:///home/claude/NotoSansKR-Bold.ttf"); font-weight: 700; }
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"NotoKR",sans-serif; font-size:9pt; color:#1a1a2e; background:#fff; line-height:1.5; }
+
+/* ── 페이지 카드 ── */
+.page {
+  width: 100%;
+  max-width: 794px;
+  padding: 12mm 15mm 0mm 15mm;
+  margin: 0 auto 0 auto;
+  background: #fff;
+  border-radius: 0px;
+
+}
+.page:last-child { border-bottom: none; margin-bottom: 0; }
+
+/* ── 헤더 ── */
+.header { display:flex; align-items:flex-start; gap:16px; border-bottom:2px solid #4a6cf7; padding-bottom:10px; margin-bottom:12px; }
+.header-info { flex:1; }
+.header h1 { font-size:20pt; font-weight:700; color:#1a1a2e; letter-spacing:1px; }
+.header .title { font-size:10pt; color:#4a6cf7; font-weight:500; margin-top:2px; }
+.header .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px 20px; margin-top:6px; }
+.header .contact-grid span { font-size:8pt; color:#6b7280; }
+
+/* ── 섹션 ── */
+.section { margin-bottom:18px; }
+.section-title { font-size:10pt; font-weight:700; color:#1a1a2e; border-left:3px solid #4a6cf7; padding-left:7px; margin-bottom:8px; margin-top:2px; }
+
+/* ── 요약 ── */
+.summary { background:#f0f4ff; border-radius:5px; padding:8px 11px; font-size:8.8pt; line-height:1.7; color:#374151; }
+
+/* ── 기술스택 ── */
+.skill-table { width:100%; border-collapse:collapse; font-size:8.3pt; }
+.skill-table tr:nth-child(odd) { background:#f9fafb; }
+.skill-table tr:nth-child(even) { background:#fff; }
+.skill-table td { padding:3px 7px; vertical-align:top; }
+.skill-table td:first-child { font-weight:700; color:#4a6cf7; width:26mm; white-space:nowrap; }
+.skill-table td:last-child { color:#374151; }
+.stag { display:inline-block; background:#e8f0fe; color:#3b5bdb; font-size:7pt; padding:1px 5px; border-radius:9px; margin:1px 2px 1px 0; font-weight:500; }
+.stag-learn { display:inline-block; background:#fff3cd; color:#856404; font-size:7pt; padding:1px 5px; border-radius:9px; margin:1px 2px 1px 0; font-weight:500; }
+
+/* ── 경력 ── */
+.exp-block { margin-bottom:11px; }
+.exp-header { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:2px; }
+.exp-company { font-size:11pt; font-weight:700; color:#1a1a2e; }
+.exp-period { font-size:7.8pt; color:#9ca3af; }
+.exp-role { font-size:8.8pt; color:#4a6cf7; font-weight:500; margin-top:2px; }
+.exp-convert { font-size:7.8pt; color:#c2410c; font-weight:600; margin-top:2px; background:#fff7ed; display:inline-block; padding:1px 7px; border-radius:4px; }
+.exp-tags { margin:4px 0; }
+.exp-tag { display:inline-block; background:#e1f5ee; color:#0f6e56; font-size:7pt; padding:1px 6px; border-radius:9px; margin:1px 2px 1px 0; font-weight:500; }
+.exp-bullets { margin-top:4px; }
+.exp-bullets li { font-size:8.5pt; color:#374151; margin-bottom:2px; margin-left:13px; line-height:1.5; }
+hr.thin { border:none; border-top:0.5px solid #e5e7eb; margin:8px 0; }
+
+/* ── 자격증/학력 ── */
+.cert-row { display:flex; gap:6px; align-items:baseline; font-size:8.5pt; margin-bottom:2px; flex-wrap:wrap; }
+.cert-name { font-weight:600; color:#1a1a2e; }
+.cert-detail { color:#6b7280; font-size:8pt; }
+.edu-row { display:flex; justify-content:space-between; align-items:center; font-size:8.5pt; flex-wrap:wrap; gap:4px; }
+.edu-name { font-weight:600; }
+.edu-detail { color:#6b7280; font-size:8pt; }
+
+/* ── 2컬럼 (데스크탑) ── */
+.bottom-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+
+/* ── 포트폴리오 ── */
+.pf-title-block { border-bottom:2px solid #4a6cf7; padding-bottom:8px; margin-bottom:12px; }
+.pf-title-block h1 { font-size:18pt; font-weight:700; color:#1a1a2e; }
+.pf-title-block .sub { font-size:9.5pt; color:#4a6cf7; font-weight:500; margin-top:2px; }
+
+.pf-card { border:0.5px solid #e5e7eb; border-radius:7px; padding:11px 13px; margin-bottom:11px; background:#fff; }
+.pf-card-header { display:flex; align-items:baseline; gap:8px; margin-bottom:3px; flex-wrap:wrap; }
+.pf-num { font-size:10pt; font-weight:700; color:#4a6cf7; min-width:20px; }
+.pf-title { font-size:10.5pt; font-weight:700; color:#1a1a2e; }
+.pf-where { font-size:7.8pt; color:#9ca3af; margin-bottom:6px; }
+.pf-tags { margin-bottom:6px; }
+.pf-tag  { display:inline-block; background:#e8f0fe; color:#3b5bdb; font-size:7pt; padding:1px 6px; border-radius:9px; margin:1px 2px 1px 0; font-weight:500; }
+.pf-tag-g{ display:inline-block; background:#e1f5ee; color:#0f6e56; font-size:7pt; padding:1px 6px; border-radius:9px; margin:1px 2px 1px 0; font-weight:500; }
+.pf-tag-o{ display:inline-block; background:#fff7ed; color:#c2410c; font-size:7pt; padding:1px 6px; border-radius:9px; margin:1px 2px 1px 0; font-weight:500; }
+.pf-label { font-weight:700; font-size:8.5pt; color:#1a1a2e; margin-top:5px; margin-bottom:2px; }
+.pf-desc  { font-size:8.5pt; color:#374151; line-height:1.6; }
+.pf-bullets { margin:0; padding:0; }
+.pf-bullets li { font-size:8.5pt; color:#374151; margin-bottom:2px; margin-left:14px; line-height:1.5; }
+.pf-result { background:#f0f9ff; border-left:3px solid #4a6cf7; padding:4px 9px; margin-top:5px; font-size:8.3pt; color:#1e40af; }
+
+.footer-note { text-align:center; font-size:7.5pt; color:#9ca3af; margin-top:8px; border-top:0.5px solid #e5e7eb; padding-top:7px; }
+
+/* ══════════════════════════════
+   모바일 반응형 (768px 이하)
+══════════════════════════════ */
+@media (max-width: 768px) {
+  body { font-size: 10pt; background: #fff; }
+
+  .page {
+    padding: 5vw 4vw;
+    margin: 0 0 6vw 0;
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: 6px solid #f3f4f6;
+  }
+  .page:last-child { border-bottom: none; }
+
+  /* 헤더 */
+  .header { flex-direction: column; gap: 8px; }
+  .header h1 { font-size: 18pt; letter-spacing: 0; }
+  .header .title { font-size: 9.5pt; }
+  .header .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+  .header .contact-grid span { font-size: 9pt; }
+
+  /* 섹션 제목 */
+  .section-title { font-size: 11pt; padding-left: 8px; }
+  .section { margin-bottom: 20px; }
+
+  /* 요약 */
+  .summary { font-size: 9.5pt; padding: 10px 12px; }
+
+  /* 기술스택 */
+  .skill-table, .skill-table tbody, .skill-table tr, .skill-table td {
+    display: block;
+    width: 100%;
+  }
+  .skill-table tr {
+    margin-bottom: 6px;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .skill-table td:first-child {
+    width: 100%;
+    background: #e8f0fe;
+    color: #3b5bdb;
+    font-size: 8.5pt;
+    padding: 4px 10px;
+    border-radius: 0;
+    white-space: normal;
+  }
+  .skill-table td:last-child {
+    padding: 5px 10px 7px;
+    background: #f9fafb;
+  }
+  .stag, .stag-learn { font-size: 8pt; padding: 2px 7px; margin: 2px 3px 2px 0; }
+
+  /* 경력 */
+  .exp-header { flex-direction: column; gap: 2px; }
+  .exp-company { font-size: 12pt; }
+  .exp-period { font-size: 8.5pt; }
+  .exp-role { font-size: 9.5pt; }
+  .exp-convert { font-size: 8.5pt; }
+  .exp-tag { font-size: 8pt; padding: 2px 7px; margin: 2px 3px 2px 0; }
+  .exp-bullets li { font-size: 9pt; margin-bottom: 4px; line-height: 1.6; }
+
+  /* 자격증·학력 2컬럼 → 1컬럼 */
+  .bottom-grid { grid-template-columns: 1fr; gap: 10px; }
+  .cert-name, .cert-detail { font-size: 9pt; }
+  .edu-name, .edu-detail { font-size: 9pt; }
+
+  /* 포트폴리오 */
+  .pf-title-block h1 { font-size: 16pt; }
+  .pf-title-block .sub { font-size: 9.5pt; }
+
+  .pf-card { padding: 12px 12px; border-radius: 8px; border: 0.5px solid #e5e7eb; }
+  .pf-title { font-size: 11pt; }
+  .pf-where { font-size: 8.5pt; }
+  .pf-tag, .pf-tag-g, .pf-tag-o { font-size: 8pt; padding: 2px 7px; margin: 2px 3px 2px 0; }
+  .pf-label { font-size: 9.5pt; margin-top: 8px; }
+  .pf-desc  { font-size: 9.5pt; }
+  .pf-bullets li { font-size: 9pt; margin-bottom: 4px; line-height: 1.6; }
+  .pf-result { font-size: 9pt; padding: 5px 10px; }
+
+  .footer-note { font-size: 8.5pt; padding-top: 10px; }
+}
+
+/* 작은 모바일 (480px 이하) */
+@media (max-width: 480px) {
+  .header h1 { font-size: 16pt; }
+  .header .title { font-size: 9pt; }
+  .exp-company { font-size: 11pt; }
+  .pf-title { font-size: 10.5pt; }
+}
+
+@media print {
+  .page-break {
+      margin-top: 15mm;
+    page-break-before: always;
+    break-before: page;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ PAGE 1 : 경력기술서 ══ -->
+<div class="page">
+
+  <!-- 헤더 -->
+  <div class="header">
+    <div class="header-info">
+      <h1>정 다 훈</h1>
+      <div class="title">Android Developer · 핀테크 금융 서비스 전문 · 총 경력 약 6년</div>
+      <div class="contact-grid">
+        <span>📞 010-5687-9507</span>
+        <span>✉ ekgns060@gmail.com</span>
+        <span>📍 서울특별시</span>
+        <span>🔗 github.com/JeongDaHun</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="section">
+    <div class="section-title">Summary</div>
+    <div class="summary">
+      핀테크 금융 서비스에서 약 6년간 안정성과 품질에 책임감을 갖고 Android 앱을 주도적으로 개발해온 개발자입니다.<br>
+      SBI 저축은행에서 4년 반간 금융인증서·마이데이터·빅테크 WebView 연동 등 복잡한 도메인 문제를 팀과 함께 해결하며, 고객의 삶에 실질적인 가치를 더하는 개발을 지향합니다.
+    </div>
+  </div>
+
+  <!-- 기술스택 -->
+  <div class="section">
+    <div class="section-title">기술 스택</div>
+    <table class="skill-table">
+      <tbody><tr><td>Mobile Platform</td><td><span class="stag">Android</span><span class="stag">Kotlin</span><span class="stag">Java</span><span class="stag">Flutter</span><span class="stag">Dart</span></td></tr>
+      <tr><td>Architecture</td><td><span class="stag">MVVM</span><span class="stag">Clean Architecture</span><span class="stag">AAC</span><span class="stag">BLoC</span></td></tr>
+      <tr><td>UI</td><td><span class="stag">Jetpack Compose</span><span class="stag">View System</span><span class="stag">DataBinding</span></td></tr>
+      <tr><td>Async</td><td><span class="stag">Coroutine</span><span class="stag">Flow</span><span class="stag">RxJava</span><span class="stag">LiveData</span></td></tr>
+      <tr><td>Library</td><td><span class="stag">Hilt</span><span class="stag">Room DB</span><span class="stag">Retrofit</span><span class="stag">OkHttp</span><span class="stag">Glide</span><span class="stag">Lottie</span><span class="stag">FCM</span><span class="stag">Kakao SDK</span><span class="stag">mOTP</span><span class="stag">NetFunnel</span><span class="stag">mTransKey</span><span class="stag">OCR</span><span class="stag">Delfino</span></td></tr>
+      <tr><td>DB</td><td><span class="stag">Oracle</span><span class="stag">MySQL</span></td></tr>
+      <tr><td>Web</td><td><span class="stag">WebView</span><span class="stag">JavaScript Bridge</span><span class="stag">JSP</span><span class="stag">jQuery</span><span class="stag">JavaScript</span></td></tr>
+      <tr><td>Security / Finance</td><td><span class="stag">금융인증서 API</span><span class="stag">사설인증서</span><span class="stag">EverSafe</span><span class="stag">Codmix</span><span class="stag">보안키패드</span><span class="stag">생체인증</span><span class="stag">모바일OTP</span></td></tr>
+      <tr><td>Internal Framework</td><td><span class="stag">JexFrame</span><span class="stag">Spider</span></td></tr>
+      <tr><td>Tool</td><td><span class="stag">Git</span><span class="stag">SVN</span><span class="stag">Slack</span><span class="stag">Android Studio</span><span class="stag">Eclipse</span><span class="stag">Orange</span></td></tr>
+    </tbody></table>
+  </div>
+
+  <!-- 경력 -->
+  <div class="section">
+    <div class="section-title">경력</div>
+
+    <!-- SBI 저축은행 -->
+    <div class="exp-block">
+      <div class="exp-header">
+        <div class="exp-company">SBI 저축은행</div>
+        <div class="exp-period">2021.07 ~ 현재 &nbsp;|&nbsp; 약 4년 8개월</div>
+      </div>
+      <div class="exp-role">비대면서비스팀 &nbsp;|&nbsp; Android 앱 / Web 여신 서비스 개발 &nbsp;|&nbsp; 정규직 주임</div>
+      <div class="exp-convert">★ 프리랜서(2021.07) → 정규직 전환(2024.08)</div>
+      <div class="exp-tags">
+        <span class="exp-tag">Android</span><span class="exp-tag">Kotlin</span><span class="exp-tag">MVVM</span>
+        <span class="exp-tag">Coroutine/Flow</span><span class="exp-tag">WebView</span>
+        <span class="exp-tag">금융인증서 API</span><span class="exp-tag">EverSafe</span>
+        <span class="exp-tag">마이데이터</span><span class="exp-tag">JexFrame</span>
+        <span class="exp-tag">Spider</span><span class="exp-tag">Morpheus</span>
+      </div>
+      <ul class="exp-bullets">
+        <li><b>[사이다뱅크]</b><br>
+- 메인 및 이체 화면 개편<br>
+- 금융인증서 연동(로그인·이체 전자서명·스크래핑) 및 마이데이터 서비스 개발<br>
+- 모바일 신분증, MOTP 도입<br>
+- EverSafe 난독화·위변조 탐지 솔루션 도입 및 취약성 진단 대응<br>
+- OCR·보안키패드 라이브러리 교체<br></li>
+        <li><b>[바빌론 닷컴]</b><br>
+- 개인신용·개인사업자·자동차담보·햇살론 여신 신상품 개발<br>
+- 금융인증서·사설인증서(TOSS, NAVER, KAKAO, PASS) API 연동(로그인·적합성·전자서명)<br>
+- 토스·카카오페이 대출비교 서비스 WebView 개발<br>
+- Morpheus 하이브리드 앱 개발<br></li>
+        <li><b>[기타]</b><br>
+- SBI 스마트뱅·바빌론 닷넷 Android App SDK 및 라이브러리 대응</li>
+      </ul>
+    </div>
+
+
+
+    <!-- 원모아시스템 -->
+    <div class="exp-block page-break">
+      <div class="exp-header">
+        <div class="exp-company">원모아시스템</div>
+        <div class="exp-period">2020.03 ~ 2021.07 &nbsp;|&nbsp; 1년 4개월</div>
+      </div>
+      <div class="exp-role">IT개발부 &nbsp;|&nbsp; Android / Flutter 앱 개발 &nbsp;|&nbsp; 정규직 주임</div>
+      <div class="exp-tags">
+        <span class="exp-tag">Android</span><span class="exp-tag">Java</span><span class="exp-tag">Flutter</span>
+        <span class="exp-tag">Dart</span><span class="exp-tag">BLoC</span><span class="exp-tag">Firebase</span>
+        <span class="exp-tag">FCM</span><span class="exp-tag">Kakao SDK</span><span class="exp-tag">NICE PAY</span>
+      </div>
+      <ul class="exp-bullets">
+        <li><b>[세이브존 Android]</b><br>
+- 세이브존 백화점 멤버십 Android 앱 개발 — 로그인·멤버십 포인트 조회·바코드 구현<br>
+- MVC 패턴 기반 개발, FCM 푸시 알림, REST API 서버 통신 구현<br></li>
+        <li><b>[원모아포인트 Flutter]</b><br>
+- BLoC 패턴으로 Android·iOS 동시 출시, 단일 코드베이스 유지보수<br>
+- 카카오 로그인·Apple 로그인·SMS 인증(Firebase Auth) 멀티 인증 구현<br>
+- 점주 앱과 Socket 통신으로 실시간 주문 처리, FCM 푸시 알림 구현<br>
+- NICE PAY 결제·정산 시스템, 카카오맵 연동, RESTful API 서버 개발 병행<br></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 자격증 + 학력 2컬럼 -->
+  <div class="bottom-grid">
+    <div class="section">
+      <div class="section-title">자격증</div>
+      <div class="cert-row">
+        <span class="cert-name">정보처리기사</span>
+        <span class="cert-detail">한국산업인력공단 · 2020.08.20</span>
+      </div>
+      <div class="cert-row">
+        <span class="cert-name">중등교사 2급 (정보·컴퓨터)</span>
+        <span class="cert-detail">교육부 · 2020.02.21</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">학력</div>
+      <div class="edu-row">
+        <span class="edu-name">창원대학교 컴퓨터공학과 졸업</span>
+        <span class="edu-detail">2014.03 ~ 2020.02</span>
+      </div>
+      <div style="font-size:8pt; color:#6b7280; margin-top:2px;">학점 3.55 / 4.5</div>
+    </div>
+  </div>
+
+</div><!-- /page1 -->
+
+
+<!-- ══ PAGE 2 : 포트폴리오 ══ -->
+<div class="page">
+
+  <div class="pf-title-block">
+    <h1>포트폴리오</h1>
+    <div class="sub">주요 프로젝트 상세 &nbsp;|&nbsp; 정다훈 · Android Developer</div>
+  </div>
+
+  <!-- 01 사이다뱅크 Android -->
+  <div class="pf-card">
+    <div class="pf-card-header">
+      <span class="pf-num">01</span>
+      <span class="pf-title">사이다뱅크 개발</span>
+    </div>
+    <div class="pf-where">SBI 저축은행 (프리랜서) &nbsp;|&nbsp; 2021.07 ~ 2024.03 &nbsp;|&nbsp; 핀테크 금융 앱</div>
+    <div class="pf-tags">
+      <span class="pf-tag">Kotlin</span><span class="pf-tag">Java</span><span class="pf-tag">MVVM</span>
+      <span class="pf-tag">AAC</span><span class="pf-tag">Coroutine</span>
+      <span class="pf-tag">Jetpack Compose</span>
+      <span class="pf-tag">금융인증서 API</span><span class="pf-tag">EverSafe</span>
+      <span class="pf-tag">마이데이터</span>
+      <span class="pf-tag">JexFrame</span>
+    </div>
+    <div class="pf-label">담당 내용</div>
+    <ul class="pf-bullets">
+      <li>메인 및 이체 화면 개편 — 고령자(쉬운모드) 도입</li>
+      <li>금융인증서 API 전 흐름 연동 — 로그인·이체 전자서명·스크래핑 (Android 파트 주도적으로 설계·구현)</li>
+      <li>마이데이터 서비스 개발 — 계좌·카드·페이 통합 조회</li>
+      <li>신규 기능 개발 시 Jetpack Compose 도입 — View System과 혼용하며 점진적 전환 주도, 개발 생산성 향상</li>
+      <li>모바일 인증서 도입</li>
+      <li>앱 위변조 방지·코드 난독화(EverSafe) 적용, 취약성 진단 대응</li>
+      <li>OCR·스크래핑·보안키패드 라이브러리 연동</li>
+    </ul>
+    <div class="pf-result">✔ 메인화면 개편부터 인증·보안 솔루션 도입까지 핀테크 금융 앱 핵심 기능 담당</div>
+  </div>
+
+  <!-- 02 바빌론 닷컴 -->
+  <div class="pf-card">
+    <div class="pf-card-header">
+      <span class="pf-num">02</span>
+      <span class="pf-title">바빌론 닷컴 개발</span>
+    </div>
+    <div class="pf-where">SBI 저축은행 (정규직) &nbsp;|&nbsp; 2024.08 ~ 현재 &nbsp;|&nbsp; 대출 비대면 채널</div>
+    <div class="pf-tags">
+      <span class="pf-tag">JAVA</span><span class="pf-tag">JavaScript</span><span class="pf-tag">JSP</span>
+      <span class="pf-tag">JQuery</span><span class="pf-tag">Oracle</span>
+      <span class="pf-tag">금융인증서 API</span><span class="pf-tag">사설인증서</span>
+      <span class="pf-tag">WebView</span>
+      <span class="pf-tag">Spider</span><span class="pf-tag">Morpheus</span>
+    </div>
+    <div class="pf-label">담당 내용</div>
+    <ul class="pf-bullets">
+      <li>개인신용·개인사업자·자동차담보·햇살론 여신 신상품 개발</li>
+      <li>금융인증서·사설인증서 API 연동 — 로그인·적합성·전자서명 전 흐름</li>
+      <li>토스 대출비교·카카오페이앱 대출비교 서비스 WebView 개발</li>
+      <li>Morpheus 하이브리드 앱 개발 — 모바일 웹·앱 간 연동</li>
+      <li>신규 보안키패드 교체 연동</li>
+    </ul>
+    <div class="pf-result">✔ 여신 신상품 개발부터 인증 연동·하이브리드 앱까지 비대면 대출 채널 전반 개발 및 서비스 운영 중</div>
+  </div>
+
+  <!-- 03 여신통합 프로젝트 -->
+  <div class="pf-card page-break">
+    <div class="pf-card-header">
+      <span class="pf-num">03</span>
+      <span class="pf-title">여신통합 프로젝트 — 3개 채널 통합 신규 구축</span>
+    </div>
+    <div class="pf-where">SBI 저축은행 (정규직) &nbsp;|&nbsp; 2024.08 ~ 현재 &nbsp;|&nbsp; 채널 통합 대규모 프로젝트</div>
+
+    <div class="pf-label">프로젝트 배경</div>
+    <div class="pf-desc" style="margin-bottom:4px;">바빌론닷컴·바빌론닷넷·사이다뱅크 3개 여신 채널을 하나의 통합 플랫폼으로 신규 구축하는 대규모 프로젝트로, 외부 수행사가 개발을 담당하고 내부에서 업무 요건 정의 및 오픈 준비 전반을 담당<br>
+PC웹·모바일웹·앱·관리자 4종 채널을 동시에 진행하며 현업·수행사·인프라 담당자 등 다수의 이해관계자와 협업</div>
+    <div class="pf-label">담당 내용</div>
+    <ul class="pf-bullets">
+      <li>여신 업무 프로세스 분석 및 요구사항 정의 — 현업 담당자·외부 수행사와 회의 참여, 업무 프로세스 검증</li>
+      <li>채널별(PC웹·모바일웹·앱·관리자) 화면 및 업무 흐름 검증 — 수행사 개발 결과물 확인 및 피드백</li>
+      <li>오픈 준비 인프라 항목 전반 조율 — 신규 IP 채번, L4 구성, Global DNS, 방화벽, 보안 취약성, 웹접근성, 유량제어, SEO 각 담당자 요청 및 완료 확인</li>
+    </ul>
+    <div class="pf-result">✔ 3개 채널·4종 플랫폼 동시 오픈을 위한 업무 요건 정의부터 인프라 오픈까지 전 과정 참여</div>
+  </div>
+
+  <!-- 04 원모아포인트 -->
+  <div class="pf-card">
+    <div class="pf-card-header">
+      <span class="pf-num">04</span>
+      <span class="pf-title">원모아포인트 Flutter 크로스플랫폼 앱</span>
+    </div>
+    <div class="pf-where">원모아시스템 &nbsp;|&nbsp; 2020.10 ~ 2021.07 &nbsp;|&nbsp; 멤버십·포인트 커머스</div>
+    <div class="pf-tags">
+      <span class="pf-tag-g">Flutter</span><span class="pf-tag-g">Dart</span>
+      <span class="pf-tag-g">BLoC</span><span class="pf-tag-g">Firebase</span>
+      <span class="pf-tag-g">FCM</span><span class="pf-tag-g">NICE PAY</span>
+      <span class="pf-tag-g">Socket 통신</span><span class="pf-tag-g">Kakao SDK</span>
+    </div>
+    <div class="pf-label">담당 내용</div>
+    <ul class="pf-bullets">
+      <li>Flutter BLoC 패턴으로 Android·iOS 동시 출시 — 단일 코드베이스 유지보수</li>
+      <li>카카오 로그인·Apple 로그인·SMS 인증(Firebase Auth) 멀티 인증 구현</li>
+      <li>점주 앱과 Socket 통신으로 실시간 주문 처리, FCM 푸시 알림 구현</li>
+      <li>NICE PAY 결제·정산 시스템 및 카카오맵 연동, RESTful API 서버 개발 병행</li>
+    </ul>
+    <div class="pf-result">✔ Flutter 단일 코드베이스로 Android·iOS 동시 출시 및 실서비스 운영</div>
+  </div>
+
+  <!-- 05 세이브존 Android -->
+  <div class="pf-card">
+    <div class="pf-card-header">
+      <span class="pf-num">05</span>
+      <span class="pf-title">세이브존 Android 앱 개발</span>
+    </div>
+    <div class="pf-where">원모아시스템 &nbsp;|&nbsp; 2020.03 ~ 2021.07 &nbsp;|&nbsp; 백화점 멤버십</div>
+    <div class="pf-tags">
+      <span class="pf-tag-g">Kotlin</span><span class="pf-tag-g">Java</span>
+      <span class="pf-tag-g">Android SDK</span><span class="pf-tag-g">REST API</span>
+      <span class="pf-tag-g">Firebase</span><span class="pf-tag-g">FCM</span>
+    </div>
+    <div class="pf-label">담당 내용</div>
+    <ul class="pf-bullets">
+      <li>세이브존 백화점 멤버십 Android 앱 개발 및 유지보수</li>
+      <li>상품 목록·상품 상세·할인 품목 화면 개발 및 멤버십 서비스 구현</li>
+      <li>FCM 푸시 알림 연동, REST API 기반 서버 통신 구현</li>
+      <li>Android 네이티브 주도 개발 — 원모아포인트 Flutter 전환 전 기반 앱 담당</li>
+    </ul>
+    <div class="pf-result">✔ 백화점 멤버십 Android 앱 개발 — 입사 초기부터 실서비스 배포 경험</div>
+  </div>
+
+</div><!-- /page2 -->
+
+<!-- PAGE 3 : 포트폴리오 (계속) -->
+<div class="page page-break">
+
+  <div class="pf-title-block">
+    <h1>포트폴리오</h1>
+    <div class="sub">개인 프로젝트 &nbsp;|&nbsp; 정다훈 · Android Developer</div>
+  </div>
+
+  <!-- 06 가상화폐 시세 앱 -->
+  <div class="pf-card">
+    <div class="pf-card-header">
+      <span class="pf-num">06</span>
+      <span class="pf-title">가상화폐 시세 조회 Android 앱</span>
+    </div>
+    <div class="pf-where">개인 프로젝트 &nbsp;|&nbsp; Android &nbsp;|&nbsp; <a href="https://github.com/JeongDaHun/korbit" style="color:#4a6cf7;">github.com/JeongDaHun/korbit</a></div>
+    <div class="pf-tags">
+      <span class="pf-tag-o">Kotlin</span><span class="pf-tag-o">MVVM</span>
+      <span class="pf-tag-o">Clean Architecture</span><span class="pf-tag-o">Coroutine/Flow</span>
+      <span class="pf-tag-o">Hilt</span><span class="pf-tag-o">Retrofit</span>
+      <span class="pf-tag-o">Room DB</span><span class="pf-tag-o">RxJava</span>
+    </div>
+    <div class="pf-label">구현 내용</div>
+    <ul class="pf-bullets">
+      <li>가상화폐 거래소 REST API 연동 — 전체 시세 실시간 조회 및 즐겨찾기 기능 구현</li>
+      <li>MVVM + Clean Architecture 적용 — Domain / Data / Presentation 레이어 완전 분리</li>
+      <li>Hilt 의존성 주입, Coroutine·Flow 비동기 처리, Room DB 로컬 캐싱 (즐겨찾기 영속화)</li>
+      <li>실시간 가격 변동 색상 표시(상승/하락), 이름·현재가·등락률·거래대금 기준 정렬 구현</li>
+      <li>RxJava ↔ Coroutine 병행 사용으로 두 비동기 패러다임 모두 적용</li>
+    </ul>
+    <div class="pf-result">✔ 실무 아키텍처 패턴(MVVM + Clean Architecture + Hilt)을 직접 설계·구현</div>
+  </div>
+
+  <!-- 07 BaseApplication -->
+  <div class="pf-card">
+    <div class="pf-card-header">
+      <span class="pf-num">07</span>
+      <span class="pf-title">Android 프로젝트 보일러플레이트 — BaseApplication</span>
+    </div>
+    <div class="pf-where">개인 프로젝트 (공용 기반 템플릿) &nbsp;|&nbsp; Android &nbsp;|&nbsp; <a href="https://github.com/JeongDaHun/BaseApplication" style="color:#4a6cf7;">github.com/JeongDaHun/BaseApplication</a></div>
+    <div class="pf-tags">
+      <span class="pf-tag-o">Kotlin</span><span class="pf-tag-o">MVVM</span>
+      <span class="pf-tag-o">Clean Architecture</span><span class="pf-tag-o">Hilt</span>
+      <span class="pf-tag-o">Coroutine/Flow</span><span class="pf-tag-o">Retrofit</span>
+      <span class="pf-tag-o">Room DB</span><span class="pf-tag-o">Jetpack Compose</span>
+      <span class="pf-tag-o">Navigation</span><span class="pf-tag-o">DataBinding</span>
+    </div>
+    <div class="pf-label">프로젝트 배경</div>
+    <div class="pf-desc" style="margin-bottom:4px;">새 프로젝트를 시작할 때마다 반복 작업을 줄이기 위해 직접 설계·유지관리하는 Android 기반 템플릿입니다. 멀티 모듈(presentation / data / domain) 구조와 핵심 라이브러리를 미리 세팅해 바로 개발에 집중할 수 있도록 구성했습니다.</div>
+    <div class="pf-label">주요 구성</div>
+    <ul class="pf-bullets">
+      <li>멀티 모듈 구조 — presentation / data / domain 레이어 분리, 의존성 방향 단방향 유지</li>
+      <li>Hilt 전역 DI 세팅 — RetrofitModule·DatabaseModule·RepositoryModule 분리 구성</li>
+      <li>BaseActivity / BaseComposeActivity / BaseFragment 공통 추상 클래스로 반복 코드 제거</li>
+      <li>Retrofit + OkHttp + Gson 네트워크 레이어, Room DB 로컬 데이터소스 기본 구성</li>
+      <li>Jetpack Compose + DataBinding 혼용 지원 — 점진적 Compose 전환 구조 적용</li>
+      <li>Navigation Component 기반 하단 탭 + 화면 전환 구조 탑재</li>
+      <li>libs.versions.toml 버전 카탈로그로 의존성 중앙 관리</li>
+    </ul>
+    <div class="pf-result">✔ 프로젝트마다 재사용 — 반복 셋업 시간을 줄이고 아키텍처 일관성 유지</div>
+  </div>
+
+  <div class="footer-note">정다훈 &nbsp;|&nbsp; 010-5687-9507 &nbsp;|&nbsp; ekgns060@gmail.com &nbsp;|&nbsp; 2026.03</div>
+
+</div><!-- /page3 -->
+
+
+
+</body></html>
